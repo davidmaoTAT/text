@@ -37,3 +37,25 @@ function selectText(textbox,startIndex,stopIndex){
         }
     }
 ```
+
+过滤所有按键
+```javascript
+EvenUtil.addHandler(textbox,"keypress",function(event){
+        event = EvenUtil.getEvent(event);
+        EvenUtil.preventDefault(event);
+    });
+```
+
+只允许输入数字
+```javascript
+EvenUtil.addHandler(textbox,"keypress",function(event){
+        event = EvenUtil.getEvent(event);
+        var target = EvenUtil.getTarget(event);
+        var charCode = EvenUtil.getCharCode(event);
+
+        if(!/\d/.test(String.fromCharCode(charCode))){
+            EvenUtil.preventDefault(event);
+        }
+
+    })
+```
